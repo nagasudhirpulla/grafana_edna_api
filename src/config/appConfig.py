@@ -4,10 +4,12 @@ import json
 
 @dataclass
 class AppConfig:
-    isRandom:bool = field(default=True)
+    isRandom: bool = field(default=True)
     histDataUrlBase: str = field(default="")
     flaskSecret: str = field(default="")
     testPnt: str = field(default="")
+    flaskHost: str = field(default="localhost")
+    flaskPort: int = field(default=8080)
 
 
 def loadAppConfig(fName="config/config.json") -> AppConfig:
