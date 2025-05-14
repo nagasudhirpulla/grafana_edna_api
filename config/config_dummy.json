@@ -1,0 +1,6 @@
+{
+    "isRandom": true,
+    "histDataUrlBase": "https://hostip/path",
+    "flaskSecret": "lkkhjgjdfdbjhjg",
+    "testPnt":"abcd"
+}
