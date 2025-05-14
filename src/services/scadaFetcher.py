@@ -13,7 +13,7 @@ def fetchScadaPntHistData(pntId: str, startTime: dt.datetime, endTime: dt.dateti
         return fetchScadaPntRandHistData(pntId, startTime, endTime)
     pntId = pntId.strip()
     if pntId == "":
-        return pd.Series()
+        return []
     urlStr = appConf.histDataUrlBase
     paramsObj = {"pnt": pntId,
                  "strtime": startTime.strftime("%d/%m/%Y/%H:%M:%S"),
