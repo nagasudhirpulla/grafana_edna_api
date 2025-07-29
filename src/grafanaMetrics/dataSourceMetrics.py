@@ -22,6 +22,7 @@ samplingFreqPayload = {
     "name": "sampling_freq",
     "type": "input"
 }
+
 avoidFuturePayload = {
     "label": "Avoid Future",
     "name": "avoid_future",
@@ -32,10 +33,16 @@ avoidFuturePayload = {
     ]
 }
 
+timeOffsetPayload = {
+    "label": "Time Offset (Secs)",
+    "name": "time_offset_secs",
+    "type": "input"
+}
+
 historyMetric = {
     "label": "History",
     "value": "history",
-    "payloads": [pointIdPayload, samplingTypePayload, samplingFreqPayload, avoidFuturePayload]
+    "payloads": [pointIdPayload, samplingTypePayload, samplingFreqPayload, avoidFuturePayload, timeOffsetPayload]
 }
 
 metrics = [historyMetric]

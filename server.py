@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from copy import deepcopy
 import datetime as dt
 from src.config.appConfig import loadAppConfig
-from src.grafanaMetrics.dataSourceMetrics import metrics, pointIdPayload, samplingTypePayload, avoidFuturePayload, samplingFreqPayload
+from src.grafanaMetrics.dataSourceMetrics import metrics, pointIdPayload, samplingTypePayload, avoidFuturePayload, samplingFreqPayload, timeOffsetPayload
 from src.services.scadaFetcher import fetchScadaPntHistData
 from dateutil import tz
 
@@ -49,8 +49,10 @@ def queryData():
         samplFreq = int(targetPayload.get(samplingFreqPayload["name"], "60"))
         samplingType = targetPayload.get(samplingTypePayload["name"], "")
         pntId = targetPayload.get(pointIdPayload["name"], "")
+        avoidFuture = targetPayload.get(avoidFuturePayload["name"], "no")
+        timeOffsetSecs = targetPayload.get(timeOffsetPayload["name"], 0)
         data = fetchScadaPntHistData(
-            pntId, startTime, endTime, samplingType, samplFreq)
+            pntId, startTime, endTime, samplingType, samplFreq, avoidFuture == "yes", int(timeOffsetSecs))
         targetData["datapoints"] = data
         response.append(targetData)
     # print(response)
